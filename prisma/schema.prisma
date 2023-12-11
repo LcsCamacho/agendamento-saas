@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Empresa {
+  id              Int           @id @default(autoincrement())
+  uuid            String        @unique @default(uuid())
+  nome            String
+  cnpj            String
+  deletedAt       DateTime?
+  deleted         Boolean       @default(false)
+  dataCriacao     DateTime      @default(now())
+  dataAtualizacao DateTime      @updatedAt
+  Agendamento     Agendamento[]
+}
+
+model Agendamento {
+  id              Int       @id @default(autoincrement())
+  uuid            String    @unique @default(uuid())
+  dataAgendamento DateTime
+  dataCriacao     DateTime  @default(now())
+  dataAtualizacao DateTime  @updatedAt
+  deletedAt       DateTime?
+  deleted         Boolean   @default(false)
+  idEmpresa       Int
+  Empresa         Empresa   @relation(fields: [idEmpresa], references: [id])
+}
