@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const Blog = () => {
   return (
-    <>
+    <div className="container w-full">
       <Breadcrumb
         pageName="Blog Grid"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
@@ -95,7 +95,7 @@ const Blog = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

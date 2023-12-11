@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { fontSans } from "../config/fonts";
 import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Estudo apis pagamento",
-  description: "Estudando apis de pagamento",
+  title: "Agendamento-Saas",
+  description: "Plataforma de agendamento de serviços",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -28,7 +29,10 @@ export default function RootLayout({
       <body className={`${fontSans.className} min-h-screen`}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <Header />
-          <main className="w-screen flex">{children}</main>
+          <main className="w-screen flex flex-col items-center justify-center px-4 md:px-0">
+            {children}
+          </main>
+          <Footer />
         </Providers>
       </body>
     </html>

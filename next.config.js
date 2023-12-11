@@ -14,8 +14,25 @@ const nextConfig = {
         port: "",
         pathname: "*",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "*",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "*",
+      },
     ],
-    domains: ["res.cloudinary.com", "picsum.photos"],
+    domains: [
+      "res.cloudinary.com",
+      "picsum.photos",
+      "avatars.githubusercontent.com",
+      "lh3.googleusercontent.com",
+    ],
     deviceSizes: [320, 420, 768, 1024, 1200],
   },
 };

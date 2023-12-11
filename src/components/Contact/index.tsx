@@ -4,13 +4,13 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="w-full overflow-hidden py-16 md:py-20 lg:py-28"
+      className="overflow-hidden py-16 md:py-20 lg:py-28 container w-full"
     >
-      <div className="container">
-        <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4 lg:w-7/12 xl:w-8/12">
+      <div className="w-full">
+        <div className="-mx-4 flex justify-between flex-col lg:flex-row gap-2 ">
+          <div className="w-full  lg:w-6/12 xl:w-7/12">
             <div
-              className="wow fadeInUp shadow-three dark:bg-gray-dark mb-12 rounded-sm  px-8 py-11 sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]"
+              className="wow fadeInUp  shadow-three dark:bg-gray-dark mb-12 rounded-sm  px-8 py-11 sm:p-[55px] lg:mb-5 sm:px-4 xl:py-[55px]"
               data-wow-delay=".15s
               "
             >
@@ -22,7 +22,7 @@ const Contact = () => {
               </p>
               <form>
                 <div className="-mx-4 flex flex-wrap">
-                  <div className="w-full px-4 md:w-1/2">
+                  <div className="w-full sm:px-4 md:w-1/2">
                     <div className="mb-8">
                       <label
                         htmlFor="name"
@@ -37,7 +37,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  <div className="w-full px-4 md:w-1/2">
+                  <div className="w-full sm:px-4 md:w-1/2">
                     <div className="mb-8">
                       <label
                         htmlFor="email"
@@ -52,7 +52,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  <div className="w-full px-4">
+                  <div className="w-full sm:px-4">
                     <div className="mb-8">
                       <label
                         htmlFor="message"
@@ -68,7 +68,7 @@ const Contact = () => {
                       ></textarea>
                     </div>
                   </div>
-                  <div className="w-full px-4">
+                  <div className="w-full sm:px-4">
                     <button className="shadow-submit dark:shadow-submit-dark rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90">
                       Submit Ticket
                     </button>
@@ -77,7 +77,7 @@ const Contact = () => {
               </form>
             </div>
           </div>
-          <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
+          <div className="w-full lg:w-5/12 xl:w-4/12">
             <NewsLatterBox />
           </div>
         </div>

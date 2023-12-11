@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <>
+    <div className="container w-full">
       <Breadcrumb
         pageName="About Page"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
       />
       <AboutSectionOne />
       <AboutSectionTwo />
-    </>
+    </div>
   );
 };
 

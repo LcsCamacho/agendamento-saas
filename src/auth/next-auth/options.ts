@@ -2,6 +2,8 @@ import { BASE_URL_NEXT } from "@/constants/baseUrl";
 import axios from "axios";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
 
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
@@ -29,6 +31,14 @@ export const nextAuthOptions: NextAuthOptions = {
         // Return null if user data could not be retrieved
         return null;
       },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID!,
+      clientSecret: process.env.GOOGLE_SECRET!,
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
   pages: {

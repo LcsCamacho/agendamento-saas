@@ -1,10 +1,4 @@
-import TabsRegisterAndLogin from "@/auth/components/tabs-register-and-login";
 import { nextAuthOptions } from "@/auth/next-auth/options";
-import { getServerSession } from "next-auth";
-import Image from "next/image";
-import { redirect } from "next/navigation";
-import backgroundImage from "/public/images/bg-signin.jpg";
-import { SignInForm } from "@/auth/components/sign-in-form";
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import Blog from "@/components/Blog";
@@ -18,14 +12,8 @@ import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 
 export default async function Home() {
-  const session = await getServerSession(nextAuthOptions);
-
-  if (session) {
-    redirect("/turmas");
-  }
-
   return (
-    <div className="dark-linear-gradient relative w-screen h-full">
+    <div className="relative w-screen h-full">
       <main className="flex min-h-screen flex-col items-center justify-center p-24 ">
         <ScrollUp />
         <Hero />

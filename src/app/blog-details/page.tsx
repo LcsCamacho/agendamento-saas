@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const BlogDetailsPage = () => {
   return (
-    <>
+    <div className="container w-full">
       <section className="pb-[120px] pt-[150px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
@@ -340,7 +340,7 @@ const BlogDetailsPage = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

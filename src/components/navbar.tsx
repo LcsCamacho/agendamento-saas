@@ -16,8 +16,9 @@ import Image from "next/image";
 interface NavbarProps {
   pathname: string;
   nome: string;
+  image: string;
 }
-export const Navbar = ({ pathname, nome }: NavbarProps) => {
+export const Navbar = ({ pathname, nome, image }: NavbarProps) => {
   return (
     <NextUINavbar
       className="w-full max-w-7xl mx-auto"
@@ -49,11 +50,21 @@ export const Navbar = ({ pathname, nome }: NavbarProps) => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
+        <NavbarItem className="hidden sm:flex gap-2 items-center">
           <Link isExternal href={siteConfig.links.github} aria-label="Github">
             <GithubIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
+          <span className="flex gap-2 items-center">
+            <Image
+              alt="logo"
+              src={image}
+              className="rounded-full"
+              width={40}
+              height={40}
+            />{" "}
+            {nome}
+          </span>
           <LogoutButton color="danger" />
         </NavbarItem>
       </NavbarContent>
@@ -69,7 +80,16 @@ export const Navbar = ({ pathname, nome }: NavbarProps) => {
       <NavbarMenu>
         <>
           <div className="mx-4 mt-2 flex flex-col gap-2">
-            <NavbarMenuItem>Professor: {nome}</NavbarMenuItem>
+            <NavbarMenuItem className="flex gap-2 items-center">
+              <Image
+                alt="logo"
+                src={image}
+                className="rounded-full"
+                width={50}
+                height={50}
+              />{" "}
+              {nome}
+            </NavbarMenuItem>
             {siteConfig.navItems.map((item) => (
               <NavbarMenuItem key={item.href}>
                 <Link
@@ -83,6 +103,7 @@ export const Navbar = ({ pathname, nome }: NavbarProps) => {
                 </Link>
               </NavbarMenuItem>
             ))}
+
             <NavbarMenuItem>
               <LogoutButton color="danger" />
             </NavbarMenuItem>

@@ -12,7 +12,7 @@ interface PrivateLayoutProps {
 
 export default async function PrivateLayout({ children }: PrivateLayoutProps) {
   const session = await getServerSession(nextAuthOptions);
-
+  console.log(session);
   if (!session) {
     redirect("/");
   }
@@ -20,7 +20,11 @@ export default async function PrivateLayout({ children }: PrivateLayoutProps) {
   return (
     <Providers>
       <div className="relative flex flex-col items-center justify-center min-h-screen">
-        <Navbar pathname={""} nome={session.user.name} />
+        <Navbar
+          image={session.user.image}
+          pathname={""}
+          nome={session.user.name}
+        />
         {children}
         <footer className="w-full flex items-center justify-center py-3 mt-auto">
           <Link

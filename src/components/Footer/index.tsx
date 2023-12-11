@@ -1,15 +1,19 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const usePathName = usePathname();
   return (
     <>
       <footer
-        className="wow fadeInUp dark:bg-gray-dark relative z-10   pt-16 md:pt-20 lg:pt-24"
+        className={`wow fadeInUp dark:bg-gray-dark relative z-10 w-full   pt-16 md:pt-20 lg:pt-24 ${
+          usePathName === "/turmas" ? "hidden" : " "
+        }`}
         data-wow-delay=".1s"
       >
-        <div className="container">
+        <div className="container w-full mx-auto">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 max-w-[360px] lg:mb-16">

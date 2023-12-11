@@ -5,8 +5,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import { Button, Divider } from "../next-ui";
+import { useSession } from "next-auth/react";
 
 const Header = () => {
+  const { data: session } = useSession();
+  const usePathName = usePathname();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
@@ -36,19 +40,19 @@ const Header = () => {
     }
   };
 
-  const usePathName = usePathname();
-
   return (
     <>
       <header
         className={`header left-0 top-0 z-40 flex w-full items-center ${
+          usePathName === "/turmas" ? "hidden" : " "
+        }  ${
           sticky
             ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999]   !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
             : "absolute bg-transparent"
         }`}
       >
-        <div className="container">
-          <div className="relative -mx-4 flex items-center justify-between">
+        <div className="container mx-auto">
+          <div className="relative  flex items-center justify-between">
             <div className="w-60 max-w-full px-4 xl:mr-12">
               <Link
                 href="/"
@@ -72,7 +76,7 @@ const Header = () => {
                 />
               </Link>
             </div>
-            <div className="flex w-full items-center justify-between px-4">
+            <div className="flex w-full items-center justify-between ">
               <div>
                 <button
                   onClick={navbarToggleHandler}
@@ -81,30 +85,37 @@ const Header = () => {
                   className="absolute right-4 top-1/2 block translate-y-[-50%] rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
                 >
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:  ${
+                    className={`relative my-1.5 block h-0.5 w-[30px] dark:bg-white bg-black transition-all duration-300 dark:  ${
                       navbarOpen ? " top-[7px] rotate-45" : " "
                     }`}
                   />
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:  ${
+                    className={`relative my-1.5 block h-0.5 w-[30px] dark:bg-white bg-black transition-all duration-300 dark:  ${
                       navbarOpen ? "opacity-0 " : " "
                     }`}
                   />
                   <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:  ${
+                    className={`relative my-1.5 block h-0.5 w-[30px] dark:bg-white bg-black transition-all duration-300 dark:  ${
                       navbarOpen ? " top-[-8px] -rotate-45" : " "
                     }`}
                   />
                 </button>
                 <nav
                   id="navbarCollapse"
-                  className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50   px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
+                  className={`navbar z-50 dark:bg-black bg-white absolute right-0 w-[250px]  rounded border-[.5px] border-body-color/50   px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
                     navbarOpen
                       ? "visibility top-full opacity-100"
                       : "invisible top-[120%] opacity-0"
                   }`}
                 >
-                  <ul className="block lg:flex lg:space-x-12">
+                  <ul className="flex flex-col lg:flex-row lg:space-x-12 z-50">
+                    <li className="sm:hidden">
+                      {" "}
+                      <p className="pr-6 overflow-hidden text-ellipsis whitespace-nowrap ">
+                        {session?.user.name || session?.user.email}
+                      </p>
+                      <Divider />
+                    </li>
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
@@ -137,7 +148,7 @@ const Header = () => {
                               </span>
                             </p>
                             <div
-                              className={`submenu relative left-0 top-full rounded-sm   transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
+                              className={`submenu relative left-0 top-full rounded-sm dark:bg-black bg-white z-50 transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
@@ -158,19 +169,22 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <Link
-                  href="/signin"
-                  className="hidden px-7 py-3 text-base font-medium text-dark hover:opacity-70 dark:text-white md:block"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="ease-in-up shadow-btn hover:shadow-btn-hover hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white transition duration-300 hover:bg-opacity-90 md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Sign Up
-                </Link>
+              <div className="flex items-center justify-end pr-16 lg:pr-0 gap-4">
+                {session && (
+                  <div className="lg:flex gap-4 hidden">
+                    <Link href="/dashboard">Dashboard</Link>
+                  </div>
+                )}
+                {!session && (
+                  <>
+                    <Button variant="light" color="default">
+                      <Link href="/signin">Sign In</Link>
+                    </Button>
+                    <Button color="primary">
+                      <Link href="/signup">Sign Up</Link>
+                    </Button>
+                  </>
+                )}
                 <div>
                   <ThemeToggler />
                 </div>
