@@ -26,6 +26,7 @@
     "@react-aria/visually-hidden": "^3.8.7",
     "@types/bcryptjs": "^2.4.6",
     "@types/mercadopago": "^1.5.11",
+    "@types/react-modal-video": "^1.2.3",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.0.0",

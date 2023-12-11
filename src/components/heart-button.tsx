@@ -21,7 +21,7 @@ export const HeartBtn = ({
   const [isLiked, setIsLiked] = useState<boolean>(!!liked);
   return (
     <Button
-      className={`bg-white min-w-[40px] button-heart p-0 hearth-button ${className} light:border-purple-500`}
+      className={`  min-w-[40px] button-heart p-0 hearth-button ${className} light:border-purple-500`}
       onClick={onClick}
       onMouseEnter={(e) => {
         if (liked) return;

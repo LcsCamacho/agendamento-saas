@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Header from "../components/Header";
 import { fontSans } from "../config/fonts";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontSans.className} min-h-screen`}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          <Header />
           <main className="w-screen flex">{children}</main>
         </Providers>
       </body>

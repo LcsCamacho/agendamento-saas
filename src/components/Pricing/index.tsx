@@ -8,7 +8,10 @@ const Pricing = () => {
   const [isMonthly, setIsMonthly] = useState(true);
 
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
+    <section
+      id="pricing"
+      className="w-full relative z-10 py-16 md:py-20 lg:py-28"
+    >
       <div className="container">
         <SectionTitle
           title="Simple and Affordable Pricing"
@@ -43,7 +46,7 @@ const Pricing = () => {
                     isMonthly ? "" : "translate-x-full"
                   } shadow-switch-1 absolute left-0 top-[-4px] flex h-7 w-7 items-center justify-center rounded-full bg-primary transition`}
                 >
-                  <span className="active h-4 w-4 rounded-full bg-white"></span>
+                  <span className="active h-4 w-4 rounded-full  "></span>
                 </div>
               </div>
             </div>
