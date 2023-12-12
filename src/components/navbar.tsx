@@ -12,6 +12,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
+import { Avatar } from "@nextui-org/react";
 import Image from "next/image";
 interface NavbarProps {
   pathname: string;
@@ -55,16 +56,14 @@ export const Navbar = ({ pathname, nome, image }: NavbarProps) => {
             <GithubIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
-          <span className="flex gap-2 items-center">
-            <Image
-              alt="logo"
-              src={image}
-              className="rounded-full"
-              width={40}
-              height={40}
-            />{" "}
-            {nome}
-          </span>
+          <Avatar
+            src={image}
+            name={nome}
+            isBordered
+            isFocusable
+            color="primary"
+            alt="avatar"
+          />
           <LogoutButton color="danger" />
         </NavbarItem>
       </NavbarContent>

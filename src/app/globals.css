@@ -17,8 +17,11 @@ a {
   color: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
+.sidebar {
+  min-height: calc(100vh - 4rem);
+}
 
+@media (prefers-color-scheme: dark) {
   a,
   h1,
   h2,
@@ -61,10 +64,12 @@ span {
 }
 
 .dark-linear-gradient {
-  background: linear-gradient(24deg,
-      #6100c2 1.89%,
-      #1c171e 75.65%,
-      #191817 78.98%);
+  background: linear-gradient(
+    24deg,
+    #6100c2 1.89%,
+    #1c171e 75.65%,
+    #191817 78.98%
+  );
 }
 
 .text-white {
@@ -99,7 +104,6 @@ span {
   left: 0;
   right: 0;
   animation: slideDown 0.5s ease forwards, slideUp 0.5s ease 4s forwards;
-
 }
 
 .notification {

@@ -9,7 +9,7 @@ const Footer = () => {
     <>
       <footer
         className={`wow fadeInUp dark:bg-gray-dark relative z-10 w-full   pt-16 md:pt-20 lg:pt-24 ${
-          usePathName === "/turmas" ? "hidden" : " "
+          usePathName === "/dashboard" ? "hidden" : " "
         }`}
         data-wow-delay=".1s"
       >
