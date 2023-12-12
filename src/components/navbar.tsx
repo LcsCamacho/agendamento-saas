@@ -13,12 +13,13 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
 import { Avatar } from "@nextui-org/react";
-import Image from "next/image";
 interface NavbarProps {
   pathname: string;
   nome: string;
   image: string;
 }
+import Image from "next/image";
+
 export const Navbar = ({ pathname, nome, image }: NavbarProps) => {
   return (
     <NextUINavbar
@@ -28,11 +29,9 @@ export const Navbar = ({ pathname, nome, image }: NavbarProps) => {
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-1 max-w-fit select-none">
-          <>
-            <Image alt="logo" src="/images/logo.png" width={100} height={75} />
-          </>
+          <></>
         </NavbarBrand>
-        {siteConfig.navItems.map((item) => (
+        {/* {siteConfig.navItems.map((item) => (
           <NavbarItem className="hidden md:inline-block" key={item.href}>
             <Link
               key={item.href}
@@ -44,14 +43,14 @@ export const Navbar = ({ pathname, nome, image }: NavbarProps) => {
               {item.label}
             </Link>
           </NavbarItem>
-        ))}
+        ))} */}
       </NavbarContent>
 
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2 items-center">
+        <NavbarItem className="hidden sm:flex gap-4 items-center">
           <Link isExternal href={siteConfig.links.github} aria-label="Github">
             <GithubIcon className="text-default-500" />
           </Link>
@@ -78,7 +77,7 @@ export const Navbar = ({ pathname, nome, image }: NavbarProps) => {
 
       <NavbarMenu>
         <>
-          <div className="mx-4 mt-2 flex flex-col gap-2">
+          <div className="mx-4 mt-2 flex flex-col ">
             <NavbarMenuItem className="flex gap-2 items-center">
               <Image
                 alt="logo"

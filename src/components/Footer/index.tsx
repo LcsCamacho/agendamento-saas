@@ -5,11 +5,13 @@ import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const usePathName = usePathname();
+  const hideHeaderPaths = ["/dashboard", "/calendar"];
+
   return (
     <>
       <footer
         className={`wow fadeInUp dark:bg-gray-dark relative z-10 w-full   pt-16 md:pt-20 lg:pt-24 ${
-          usePathName === "/dashboard" ? "hidden" : " "
+          hideHeaderPaths.includes(usePathName) ? "hidden" : " "
         }`}
         data-wow-delay=".1s"
       >

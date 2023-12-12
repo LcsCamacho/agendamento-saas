@@ -13,21 +13,20 @@ interface PrivateLayoutProps {
 
 export default async function PrivateLayout({ children }: PrivateLayoutProps) {
   const session = await getServerSession(nextAuthOptions);
-  console.log(session);
   if (!session) {
     redirect("/");
   }
 
   return (
     <Providers>
-      <div className="relative flex flex-col items-center justify-center min-h-screen">
-        <Navbar
-          image={session.user.image}
-          pathname={""}
-          nome={session.user.name}
-        />
-        <div className="flex gap-4 w-full">
-          <Sidebar />
+      <div className="relative flex items-start justify-start min-h-screen">
+        <Sidebar />
+        <div className="flex gap-4 w-full flex-col items-center justify-start">
+          <Navbar
+            image={session.user.image}
+            pathname={""}
+            nome={session.user.name}
+          />
           {children}
         </div>
       </div>

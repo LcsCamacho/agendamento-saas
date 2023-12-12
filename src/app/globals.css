@@ -18,10 +18,11 @@ a {
 }
 
 .sidebar {
-  min-height: calc(100vh - 4rem);
+  min-height: 100vh;
 }
 
 @media (prefers-color-scheme: dark) {
+
   a,
   h1,
   h2,
@@ -64,12 +65,10 @@ span {
 }
 
 .dark-linear-gradient {
-  background: linear-gradient(
-    24deg,
-    #6100c2 1.89%,
-    #1c171e 75.65%,
-    #191817 78.98%
-  );
+  background: linear-gradient(24deg,
+      #6100c2 1.89%,
+      #1c171e 75.65%,
+      #191817 78.98%);
 }
 
 .text-white {
